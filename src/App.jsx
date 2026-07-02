@@ -85,21 +85,37 @@ function App() {
     setStep(prev => prev - 1);
   };
 
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby_ใส่_URL_ของจริงตรงนี้/exec'; 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
+    // ตรวจสอบว่าใส่ลิงก์ผิดประเภทหรือไม่
+    if (SCRIPT_URL.includes('docs.google.com')) {
+      alert('คุณใส่ลิงก์แผ่นงาน Google Sheets ผิดประเภทครับ! ต้องใช้ลิงก์ Web App (script.google.com) เท่านั้นครับ');
+      setIsSubmitting(false);
+      return;
+    }
+    
+    if (SCRIPT_URL.includes('ใส่_URL_ของจริงตรงนี้')) {
+      alert('กรุณานำ Web App URL ของ Google Apps Script มาใส่ในไฟล์ App.jsx บรรทัดที่ 46 ก่อนครับ');
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      const response = await fetch('/api/submit', {
+      await fetch(SCRIPT_URL, {
         method: 'POST',
+        mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.message || 'Failed to submit data');
       
+      // การส่งแบบ no-cors จะไม่สามารถอ่าน response กลับมาได้ จึงให้ถือว่าสำเร็จเสมอหากไม่เกิด Error ระบบขัดข้อง
       setIsSubmitting(false);
       setIsSuccess(true);
+      window.scrollTo(0, 0);
     } catch (error) {
       console.error('Error!', error.message);
       setIsSubmitting(false);
