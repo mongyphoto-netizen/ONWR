@@ -169,13 +169,13 @@ function App() {
                     <hr style={{ margin: '1rem 0', opacity: 0.2 }} />
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                       <div className="form-group"><label className="form-label">ชื่อ - นามสกุล <span style={{color:'red'}}>*</span></label><input type="text" name="name" className="form-control" required value={formData.name} onChange={handleChange} /></div>
-                      <div className="form-group"><label className="form-label">ตำแหน่ง</label><input type="text" name="position" className="form-control" value={formData.position} onChange={handleChange} /></div>
-                      <div className="form-group"><label className="form-label">หน่วยงาน</label><input type="text" name="organization" className="form-control" value={formData.organization} onChange={handleChange} /></div>
+                      <div className="form-group"><label className="form-label">ตำแหน่ง <span style={{color:'red'}}>*</span></label><input type="text" name="position" className="form-control" required value={formData.position} onChange={handleChange} /></div>
+                      <div className="form-group"><label className="form-label">หน่วยงาน <span style={{color:'red'}}>*</span></label><input type="text" name="organization" className="form-control" required value={formData.organization} onChange={handleChange} /></div>
                       <div className="form-group"><label className="form-label">เบอร์โทรศัพท์ <span style={{color:'red'}}>*</span></label><input type="text" name="phone" className="form-control" required value={formData.phone} onChange={handleChange} /></div>
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
-                      <div className="form-group"><label className="form-label">ตำบล</label><input type="text" name="tambon" className="form-control" value={formData.tambon} onChange={handleChange} /></div>
-                      <div className="form-group"><label className="form-label">อำเภอ</label><input type="text" name="amphoe" className="form-control" value={formData.amphoe} onChange={handleChange} /></div>
+                      <div className="form-group"><label className="form-label">ตำบล <span style={{color:'red'}}>*</span></label><input type="text" name="tambon" className="form-control" required value={formData.tambon} onChange={handleChange} /></div>
+                      <div className="form-group"><label className="form-label">อำเภอ <span style={{color:'red'}}>*</span></label><input type="text" name="amphoe" className="form-control" required value={formData.amphoe} onChange={handleChange} /></div>
                       <div className="form-group"><label className="form-label">จังหวัด <span style={{color:'red'}}>*</span></label><input type="text" name="province" className="form-control" required value={formData.province} onChange={handleChange} /></div>
                     </div>
                     <div className="form-group">
