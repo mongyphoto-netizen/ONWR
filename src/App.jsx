@@ -85,7 +85,7 @@ function App() {
     setStep(prev => prev - 1);
   };
 
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby_ใส่_URL_ของจริงตรงนี้/exec'; 
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxjF8vbLOb2JjxewhVA73mk_ZiZOospxh4kDx8nZ_H1Utpnj3AfjeynSK12thlF5bHHXw/exec'; 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
