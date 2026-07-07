@@ -214,19 +214,26 @@ function App() {
                       <hr style={{ margin: '1rem 0', opacity: 0.2 }} />
                       
                       {EVAL_ITEMS.map((item, index) => (
-                        <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.75rem', background: index % 2 === 0 ? '#f9fafb' : 'white', borderRadius: '4px' }}>
-                          <div style={{flex: 1, paddingRight: '1rem'}}>
-                            <div>{item.label} <span style={{color:'red'}}>*</span></div>
-                            {item.subLabel && <div style={{fontSize: '0.8rem', color: '#6b7280', marginTop: '0.25rem'}}>({item.subLabel})</div>}
+                        <div key={item.id} style={{ padding: '0.75rem', background: index % 2 === 0 ? '#f9fafb' : 'white', borderRadius: '4px' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <div style={{flex: 1, paddingRight: '1rem'}}>
+                              <div>{item.label} <span style={{color:'red'}}>*</span></div>
+                              {item.subLabel && <div style={{fontSize: '0.8rem', color: '#6b7280', marginTop: '0.25rem'}}>({item.subLabel})</div>}
+                            </div>
+                            <div style={{display: 'flex', gap: '0.5rem'}}>
+                              {['N/A', 5, 4, 3, 2, 1].map(score => (
+                                <label key={score} style={{display: 'flex', flexDirection: 'column', alignItems: 'center', cursor: 'pointer', minWidth: '40px'}}>
+                                  <span style={{fontSize: score === 'N/A' ? '0.75rem' : '1rem', color: score === 'N/A' ? '#9ca3af' : 'inherit'}}>{score}</span>
+                                  <input type="radio" name={item.id} value={score} required checked={formData[item.id] === String(score)} onChange={handleChange} />
+                                </label>
+                              ))}
+                            </div>
                           </div>
-                          <div style={{display: 'flex', gap: '0.5rem'}}>
-                            {['N/A', 5, 4, 3, 2, 1].map(score => (
-                              <label key={score} style={{display: 'flex', flexDirection: 'column', alignItems: 'center', cursor: 'pointer', minWidth: '40px'}}>
-                                <span style={{fontSize: score === 'N/A' ? '0.75rem' : '1rem', color: score === 'N/A' ? '#9ca3af' : 'inherit'}}>{score}</span>
-                                <input type="radio" name={item.id} value={score} required checked={formData[item.id] === String(score)} onChange={handleChange} />
-                              </label>
-                            ))}
-                          </div>
+                          {item.id === 'e10' && (
+                            <div style={{ marginTop: '0.75rem' }}>
+                              <input type="text" name="e10_topic" className="form-control" placeholder="โปรดระบุหัวข้อที่ให้ความรู้..." value={formData.e10_topic} onChange={handleChange} />
+                            </div>
+                          )}
                         </div>
                       ))}
 
